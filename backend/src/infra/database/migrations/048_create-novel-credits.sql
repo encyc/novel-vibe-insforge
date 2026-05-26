@@ -215,125 +215,125 @@ INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rat
 ('Nemotron 3 Super (Free)', 'nemotron-3-super-free', 'opencode', 0, 0, 0, 0, 100)
 ON CONFLICT DO NOTHING;
 
--- DeepSeek V4 Flash (input=0.02, cache=1, output=2 per 1M RMB)
+-- DeepSeek V4 Flash (input=0.200000, cache=1, output=2 per 1M RMB)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('DeepSeek V4 Flash', 'deepseek-v4-flash', 'deepseek',     0.000020, 0.002000, 0.001000, 0.001000, 50),
+('DeepSeek V4 Flash', 'deepseek-v4-flash', 'deepseek',     0.000200, 0.020000, 0.010000, 0.010000, 50),
 ('DeepSeek V4 Flash (Free)', 'deepseek-v4-flash-free', 'opencode', 0, 0, 0, 0, 100)
 ON CONFLICT DO NOTHING;
 
--- DeepSeek V4 Pro (input=0.025, cache=3, output=6 per 1M RMB)
+-- DeepSeek V4 Pro (input=0.250000, cache=3, output=6 per 1M RMB)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('DeepSeek V4 Pro', 'deepseek-v4-pro', 'deepseek',     0.000025, 0.006000, 0.003000, 0.003000, 50),
-('DeepSeek V4 Pro', 'deepseek-v4-pro', 'opencode', 0.000025, 0.006000, 0.003000, 0.003000, 50)
+('DeepSeek V4 Pro', 'deepseek-v4-pro', 'deepseek',     0.000250, 0.060000, 0.030000, 0.030000, 50),
+('DeepSeek V4 Pro', 'deepseek-v4-pro', 'opencode', 0.000250, 0.060000, 0.030000, 0.030000, 50)
 ON CONFLICT DO NOTHING;
 
 -- MiniMax (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('MiniMax M2.7', 'minimax-m2.7', 'opencode', 0.002100, 0.008400, 0.000420, 0.002625, 10),
-('MiniMax M2.5', 'minimax-m2.5', 'opencode', 0.002100, 0.008400, 0.000420, 0.002625, 10)
+('MiniMax M2.7', 'minimax-m2.7', 'opencode', 0.021000, 0.084000, 0.004200, 0.026250, 10),
+('MiniMax M2.5', 'minimax-m2.5', 'opencode', 0.021000, 0.084000, 0.004200, 0.026250, 10)
 ON CONFLICT DO NOTHING;
 
 -- GLM (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('GLM 5.1', 'glm-5.1', 'opencode', 0.009800, 0.030800, 0.001820, 0, 10),
-('GLM 5', 'glm-5', 'opencode', 0.007000, 0.022400, 0.001400, 0, 10)
+('GLM 5.1', 'glm-5.1', 'opencode', 0.098000, 0.308000, 0.018200, 0, 10),
+('GLM 5', 'glm-5', 'opencode', 0.070000, 0.224000, 0.014000, 0, 10)
 ON CONFLICT DO NOTHING;
 
 -- Kimi (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('Kimi K2.5', 'kimi-k2.5', 'opencode', 0.004200, 0.021000, 0.000700, 0, 10),
-('Kimi K2.6', 'kimi-k2.6', 'opencode', 0.006650, 0.028000, 0.001120, 0, 10)
+('Kimi K2.5', 'kimi-k2.5', 'opencode', 0.042000, 0.210000, 0.007000, 0, 10),
+('Kimi K2.6', 'kimi-k2.6', 'opencode', 0.066500, 0.280000, 0.011200, 0, 10)
 ON CONFLICT DO NOTHING;
 
 -- Qwen (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('Qwen 3.6 Plus', 'qwen3.6-plus', 'opencode', 0.003500, 0.021000, 0.000350, 0.004375, 10),
-('Qwen 3.5 Plus', 'qwen3.5-plus', 'opencode', 0.001400, 0.008400, 0.000140, 0.001750, 10)
+('Qwen 3.6 Plus', 'qwen3.6-plus', 'opencode', 0.035000, 0.210000, 0.003500, 0.043750, 10),
+('Qwen 3.5 Plus', 'qwen3.5-plus', 'opencode', 0.014000, 0.084000, 0.001400, 0.017500, 10)
 ON CONFLICT DO NOTHING;
 
 -- Grok (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('Grok Build 0.1', 'grok-build%', 'opencode', 0.007000, 0.014000, 0.001400, 0, 10)
+('Grok Build 0.1', 'grok-build%', 'opencode', 0.070000, 0.140000, 0.014000, 0, 10)
 ON CONFLICT DO NOTHING;
 
 -- Claude Opus (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('Claude Opus 4.7', 'claude-opus-4-7', 'opencode', 0.035000, 0.175000, 0.003500, 0.043750, 20),
-('Claude Opus 4.7', 'claude-opus-4.7', 'opencode', 0.035000, 0.175000, 0.003500, 0.043750, 20),
-('Claude Opus 4.6', 'claude-opus-4-6', 'opencode', 0.035000, 0.175000, 0.003500, 0.043750, 20),
-('Claude Opus 4.6', 'claude-opus-4.6', 'opencode', 0.035000, 0.175000, 0.003500, 0.043750, 20),
-('Claude Opus 4.5', 'claude-opus-4-5', 'opencode', 0.035000, 0.175000, 0.003500, 0.043750, 20),
-('Claude Opus 4.5', 'claude-opus-4.5', 'opencode', 0.035000, 0.175000, 0.003500, 0.043750, 20),
-('Claude Opus 4.1', 'claude-opus-4-1', 'opencode', 0.105000, 0.525000, 0.010500, 0.131250, 20),
-('Claude Opus 4.1', 'claude-opus-4.1', 'opencode', 0.105000, 0.525000, 0.010500, 0.131250, 20)
+('Claude Opus 4.7', 'claude-opus-4-7', 'opencode', 0.350000, 1.750000, 0.035000, 0.437500, 20),
+('Claude Opus 4.7', 'claude-opus-4.7', 'opencode', 0.350000, 1.750000, 0.035000, 0.437500, 20),
+('Claude Opus 4.6', 'claude-opus-4-6', 'opencode', 0.350000, 1.750000, 0.035000, 0.437500, 20),
+('Claude Opus 4.6', 'claude-opus-4.6', 'opencode', 0.350000, 1.750000, 0.035000, 0.437500, 20),
+('Claude Opus 4.5', 'claude-opus-4-5', 'opencode', 0.350000, 1.750000, 0.035000, 0.437500, 20),
+('Claude Opus 4.5', 'claude-opus-4.5', 'opencode', 0.350000, 1.750000, 0.035000, 0.437500, 20),
+('Claude Opus 4.1', 'claude-opus-4-1', 'opencode', 1.050000, 5.250000, 0.105000, 1.312500, 20),
+('Claude Opus 4.1', 'claude-opus-4.1', 'opencode', 1.050000, 5.250000, 0.105000, 1.312500, 20)
 ON CONFLICT DO NOTHING;
 
 -- Claude Sonnet (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('Claude Sonnet 4.6', 'claude-sonnet-4-6', 'opencode', 0.021000, 0.105000, 0.002100, 0.026250, 20),
-('Claude Sonnet 4.6', 'claude-sonnet-4.6', 'opencode', 0.021000, 0.105000, 0.002100, 0.026250, 20),
-('Claude Sonnet 4.5', 'claude-sonnet-4-5', 'opencode', 0.021000, 0.105000, 0.002100, 0.026250, 20),
-('Claude Sonnet 4.5', 'claude-sonnet-4.5', 'opencode', 0.021000, 0.105000, 0.002100, 0.026250, 20),
-('Claude Sonnet 4', 'claude-sonnet-4-%', 'opencode', 0.021000, 0.105000, 0.002100, 0.026250, 20),
-('Claude Sonnet 4', 'claude-sonnet-4-%', 'opencode', 0.021000, 0.105000, 0.002100, 0.026250, 20)
+('Claude Sonnet 4.6', 'claude-sonnet-4-6', 'opencode', 0.210000, 1.050000, 0.021000, 0.262500, 20),
+('Claude Sonnet 4.6', 'claude-sonnet-4.6', 'opencode', 0.210000, 1.050000, 0.021000, 0.262500, 20),
+('Claude Sonnet 4.5', 'claude-sonnet-4-5', 'opencode', 0.210000, 1.050000, 0.021000, 0.262500, 20),
+('Claude Sonnet 4.5', 'claude-sonnet-4.5', 'opencode', 0.210000, 1.050000, 0.021000, 0.262500, 20),
+('Claude Sonnet 4', 'claude-sonnet-4-%', 'opencode', 0.210000, 1.050000, 0.021000, 0.262500, 20),
+('Claude Sonnet 4', 'claude-sonnet-4-%', 'opencode', 0.210000, 1.050000, 0.021000, 0.262500, 20)
 ON CONFLICT DO NOTHING;
 
 -- Claude Haiku (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('Claude Haiku 4.5', 'claude-haiku-4%', 'opencode', 0.007000, 0.035000, 0.000700, 0.008750, 20)
+('Claude Haiku 4.5', 'claude-haiku-4%', 'opencode', 0.070000, 0.350000, 0.007000, 0.087500, 20)
 ON CONFLICT DO NOTHING;
 
 -- Gemini (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('Gemini 3.5 Flash', 'gemini-3.5-flash%', 'opencode', 0.010500, 0.063000, 0.001050, 0, 10),
-('Gemini 3.1 Pro', 'gemini-3.1-pro%', 'opencode', 0.014000, 0.084000, 0.001400, 0, 10),
-('Gemini 3 Flash', 'gemini-3-flash%', 'opencode', 0.003500, 0.021000, 0.000350, 0, 10)
+('Gemini 3.5 Flash', 'gemini-3.5-flash%', 'opencode', 0.105000, 0.630000, 0.010500, 0, 10),
+('Gemini 3.1 Pro', 'gemini-3.1-pro%', 'opencode', 0.140000, 0.840000, 0.014000, 0, 10),
+('Gemini 3 Flash', 'gemini-3-flash%', 'opencode', 0.035000, 0.210000, 0.003500, 0, 10)
 ON CONFLICT DO NOTHING;
 
--- GPT 5.5 (via opencode)
+-- GPT 55.000000 (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('GPT 5.5 Pro', 'gpt-5.5-pro', 'opencode', 0.210000, 1.260000, 0.210000, 0, 20),
-('GPT 5.5', 'gpt-5.5', 'opencode', 0.035000, 0.210000, 0.003500, 0, 10)
+('GPT 5.5 Pro', 'gpt-5.5-pro', 'opencode', 2.100000, 12.600000, 2.100000, 0, 20),
+('GPT 5.5', 'gpt-5.5', 'opencode', 0.350000, 2.100000, 0.035000, 0, 10)
 ON CONFLICT DO NOTHING;
 
--- GPT 5.4 (via opencode)
+-- GPT 54.000000 (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('GPT 5.4 Pro', 'gpt-5.4-pro', 'opencode', 0.210000, 1.260000, 0.210000, 0, 20),
-('GPT 5.4', 'gpt-5.4', 'opencode', 0.017500, 0.105000, 0.001750, 0, 10),
-('GPT 5.4 Mini', 'gpt-5.4-mini', 'opencode', 0.005250, 0.031500, 0.000525, 0, 10),
-('GPT 5.4 Nano', 'gpt-5.4-nano', 'opencode', 0.001400, 0.008750, 0.000140, 0, 10)
+('GPT 5.4 Pro', 'gpt-5.4-pro', 'opencode', 2.100000, 12.600000, 2.100000, 0, 20),
+('GPT 5.4', 'gpt-5.4', 'opencode', 0.175000, 1.050000, 0.017500, 0, 10),
+('GPT 5.4 Mini', 'gpt-5.4-mini', 'opencode', 0.052500, 0.315000, 0.005250, 0, 10),
+('GPT 5.4 Nano', 'gpt-5.4-nano', 'opencode', 0.014000, 0.087500, 0.001400, 0, 10)
 ON CONFLICT DO NOTHING;
 
--- GPT 5.3 (via opencode)
+-- GPT 53.000000 (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('GPT 5.3 Codex Spark', 'gpt-5.3-codex-spark', 'opencode', 0.012250, 0.098000, 0.001225, 0, 10),
-('GPT 5.3 Codex', 'gpt-5.3-codex', 'opencode', 0.012250, 0.098000, 0.001225, 0, 10)
+('GPT 5.3 Codex Spark', 'gpt-5.3-codex-spark', 'opencode', 0.122500, 0.980000, 0.012250, 0, 10),
+('GPT 5.3 Codex', 'gpt-5.3-codex', 'opencode', 0.122500, 0.980000, 0.012250, 0, 10)
 ON CONFLICT DO NOTHING;
 
--- GPT 5.2 (via opencode)
+-- GPT 52.000000 (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('GPT 5.2 Codex', 'gpt-5.2-codex', 'opencode', 0.012250, 0.098000, 0.001225, 0, 10),
-('GPT 5.2', 'gpt-5.2', 'opencode', 0.012250, 0.098000, 0.001225, 0, 10)
+('GPT 5.2 Codex', 'gpt-5.2-codex', 'opencode', 0.122500, 0.980000, 0.012250, 0, 10),
+('GPT 5.2', 'gpt-5.2', 'opencode', 0.122500, 0.980000, 0.012250, 0, 10)
 ON CONFLICT DO NOTHING;
 
--- GPT 5.1 (via opencode)
+-- GPT 51.000000 (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('GPT 5.1 Codex Max', 'gpt-5.1-codex-max', 'opencode', 0.008750, 0.070000, 0.000875, 0, 10),
-('GPT 5.1 Codex', 'gpt-5.1-codex-%', 'opencode', 0.007490, 0.059500, 0.000749, 0, 10),
-('GPT 5.1 Codex Mini', 'gpt-5.1-codex-mini', 'opencode', 0.001750, 0.014000, 0.000175, 0, 10),
-('GPT 5.1', 'gpt-5.1', 'opencode', 0.007490, 0.059500, 0.000749, 0, 10)
+('GPT 5.1 Codex Max', 'gpt-5.1-codex-max', 'opencode', 0.087500, 0.700000, 0.008750, 0, 10),
+('GPT 5.1 Codex', 'gpt-5.1-codex-%', 'opencode', 0.074900, 0.595000, 0.007490, 0, 10),
+('GPT 5.1 Codex Mini', 'gpt-5.1-codex-mini', 'opencode', 0.017500, 0.140000, 0.001750, 0, 10),
+('GPT 5.1', 'gpt-5.1', 'opencode', 0.074900, 0.595000, 0.007490, 0, 10)
 ON CONFLICT DO NOTHING;
 
 -- GPT 5 (via opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority) VALUES
-('GPT 5 Codex', 'gpt-5-codex', 'opencode', 0.007490, 0.059500, 0.000749, 0, 10),
-('GPT 5', 'gpt-5', 'opencode', 0.007490, 0.059500, 0.000749, 0, 10),
-('GPT 5 Nano', 'gpt-5-nano', 'opencode', 0.000350, 0.002800, 0.000035, 0, 10)
+('GPT 5 Codex', 'gpt-5-codex', 'opencode', 0.074900, 0.595000, 0.007490, 0, 10),
+('GPT 5', 'gpt-5', 'opencode', 0.074900, 0.595000, 0.007490, 0, 10),
+('GPT 5 Nano', 'gpt-5-nano', 'opencode', 0.003500, 0.028000, 0.000350, 0, 10)
 ON CONFLICT DO NOTHING;
 
 -- Catch-all default (lowest priority, opencode)
 INSERT INTO novel.credit_rates (name, model_pattern, provider_pattern, input_rate, output_rate, cache_read_rate, cache_write_rate, priority)
-VALUES ('Default rate', '%', 'opencode', 0.007000, 0.035000, 0.000700, 0.004375, 0)
+VALUES ('Default rate', '%', 'opencode', 0.070000, 0.350000, 0.007000, 0.043750, 0)
 ON CONFLICT DO NOTHING;
 
 -- ---------------------------------------------------------------------------
