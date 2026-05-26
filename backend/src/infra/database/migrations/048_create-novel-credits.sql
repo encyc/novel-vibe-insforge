@@ -1,7 +1,7 @@
 -- Migration 048: Credit billing system (merged 048+049+050)
 -- Tables: credit_balances, credit_transactions, usage_records, credit_rates, level_config
 -- Functions: deduct_credits, recalc_user_level
--- All amounts in NUMERIC(16,2) — 1 credit = 1 RMB
+-- All amounts in NUMERIC(16,2) — 10 credits = 1 RMB
 
 -- ---------------------------------------------------------------------------
 -- 1. credit_balances — per-user credit balance (one row per user)

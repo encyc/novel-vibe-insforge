@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS novel.credit_packages (
 
 -- Seed initial packages
 INSERT INTO novel.credit_packages (name, description, price_cents, credits, bonus_credits, display_order, is_active, is_featured) VALUES
-  ('尝鲜包', '体验一下灵器 AI',    100,    1,  0, 1, true, false),
-  ('基础包', '日常创作必备',       2000,   20,  5, 2, true, false),
-  ('日常包', '高频创作首选',       5000,   50, 15, 3, true, true),
-  ('进阶包', '专业写手推荐',      10000,  100, 40, 4, true, false);
+  ('尝鲜包', '体验一下灵器 AI',    100,   10,   0, 1, true, false),
+  ('基础包', '日常创作必备',       2000,  200,  50, 2, true, false),
+  ('日常包', '高频创作首选',       5000,  500, 150, 3, true, true),
+  ('进阶包', '专业写手推荐',      10000, 1000, 400, 4, true, false);
