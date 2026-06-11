@@ -16,6 +16,8 @@ services:
       retries: 5
     security_opt:
       - no-new-privileges:true
+    networks:
+      - insforge-network
 
   postgrest:
     image: postgrest/postgrest:v12.2.12
@@ -39,6 +41,8 @@ services:
       start_period: 20s
     security_opt:
       - no-new-privileges:true
+    networks:
+      - insforge-network
 
   insforge:
     image: ghcr.io/insforge/insforge-oss:latest
@@ -90,6 +94,8 @@ services:
       - insforge-logs:/insforge-logs
     security_opt:
       - no-new-privileges:true
+    networks:
+      - insforge-network
 
   deno:
     image: ghcr.io/insforge/deno-runtime:latest
@@ -126,6 +132,8 @@ services:
       start_period: 60s
     security_opt:
       - no-new-privileges:true
+    networks:
+      - insforge-network
 
 volumes:
   postgres-data:
@@ -136,3 +144,7 @@ volumes:
     driver: local
   insforge-logs:
     driver: local
+
+networks:
+  insforge-network:
+    driver: bridge
