@@ -305,7 +305,7 @@ router.put(
         throw new AppError('File is required', 400, ERROR_CODES.STORAGE_INVALID_PARAMETER);
       }
 
-      const storedFile = await StorageService.getInstance().putObject(
+      const storedFile = await StorageService.getInstance().replaceObject(
         getUserContextFromReq(req),
         bucketName,
         objectKey,

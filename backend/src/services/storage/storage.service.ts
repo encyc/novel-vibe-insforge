@@ -258,6 +258,73 @@ export class StorageService {
     };
   }
 
+  async replaceObject(
+    ctx: UserContext,
+    bucket: string,
+    key: string,
+    file: Express.Multer.File
+  ): Promise<StorageFileSchema> {
+    this.validateBucketName(bucket);
+    this.validateKey(key);
+
+    const { etag, uploadedAt } = await withUserContext(this.getPool(), ctx, async (db) => {
+      const existing = await db.query(
+        'SELECT key FROM storage.objects WHERE bucket = $1 AND key = $2 FOR UPDATE',
+        [bucket, key]
+      );
+
+      const metadata = existing.rows[0]
+        ? await db.query(
+            `
+            UPDATE storage.objects
+            SET size = $3, mime_type = $4, uploaded_at = NOW()
+            WHERE bucket = $1 AND key = $2
+            RETURNING uploaded_at as "uploadedAt"
+          `,
+            [bucket, key, file.size, file.mimetype || null]
+          )
+        : await db.query(
+            `
+            INSERT INTO storage.objects (bucket, key, size, mime_type, uploaded_by, uploaded_via)
+            VALUES ($1, $2, $3, $4, $5, 'rest')
+            RETURNING uploaded_at as "uploadedAt"
+          `,
+            [bucket, key, file.size, file.mimetype || null, ctx.userId || null]
+          );
+
+      if (!metadata.rows[0]) {
+        throw new Error(`Failed to persist metadata for ${bucket}/${key}`);
+      }
+
+      const { etag: providerEtag } = await this.provider.putObject(bucket, key, file);
+      return { etag: providerEtag, uploadedAt: metadata.rows[0].uploadedAt };
+    });
+
+    if (etag) {
+      try {
+        await this.getPool().query(
+          'UPDATE storage.objects SET etag = $1 WHERE bucket = $2 AND key = $3',
+          [etag, bucket, key]
+        );
+      } catch (err) {
+        logger.warn('Failed to persist replacement object etag', {
+          bucket,
+          key,
+          error: err instanceof Error ? err.message : String(err),
+        });
+      }
+    }
+
+    return {
+      bucket,
+      key,
+      size: file.size,
+      mimeType: file.mimetype,
+      uploadedAt,
+      url: this.buildObjectUrl(bucket, key, etag || uploadedAt),
+    };
+  }
+
   async getObject(
     ctx: UserContext,
     bucket: string,
