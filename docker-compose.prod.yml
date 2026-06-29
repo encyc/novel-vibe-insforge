@@ -189,4 +189,9 @@ volumes:
 
 networks:
   insforge-network:
+    # Pin the bare network name. Without this, Compose prefixes it with the
+    # project name ("insforge_"), producing "insforge_insforge-network" — which
+    # the novel-vibe app stack (external: true, name: insforge-network) and
+    # deploy.sh (--network insforge-network) cannot attach to.
+    name: insforge-network
     driver: bridge
