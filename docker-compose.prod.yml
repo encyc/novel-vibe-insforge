@@ -60,8 +60,12 @@ services:
       postgres:
         condition: service_healthy
     ports:
-      - "${APP_PORT:-7130}:7130"
-      - "${AUTH_PORT:-7131}:7131"
+      # Bind to 127.0.0.1 only: in production the backend is fronted by nginx
+      # (or accessed via SSH tunnel), so there is no need to expose 7130/7131
+      # on the host's public interface. Defense in depth alongside the cloud
+      # security group.
+      - "127.0.0.1:${APP_PORT:-7130}:7130"
+      - "127.0.0.1:${AUTH_PORT:-7131}:7131"
     environment:
       - PORT=7130
       - PROJECT_ROOT=/app
