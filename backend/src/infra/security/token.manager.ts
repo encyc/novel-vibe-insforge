@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { type SignOptions } from 'jsonwebtoken';
 import crypto from 'crypto';
 import { createRemoteJWKSet, JWTPayload, jwtVerify } from 'jose';
 import { AppError } from '@/api/middlewares/error.js';
@@ -6,7 +6,11 @@ import { ERROR_CODES, NEXT_ACTION } from '@/types/error-constants.js';
 import type { TokenPayloadSchema } from '@insforge/shared-schemas';
 
 const JWT_SECRET = process.env.JWT_SECRET ?? '';
-const ACCESS_TOKEN_EXPIRES_IN = '8h';
+// Operator-overridable. The default matches upstream (15m): set
+// ACCESS_TOKEN_EXPIRES_IN="8h" to extend the access-token lifetime. Invalid
+// values are rejected by jsonwebtoken at sign time rather than silently ignored.
+const ACCESS_TOKEN_EXPIRES_IN =
+  (process.env.ACCESS_TOKEN_EXPIRES_IN as SignOptions['expiresIn']) ?? '15m';
 const REFRESH_TOKEN_EXPIRES_IN = '7d';
 
 /**
